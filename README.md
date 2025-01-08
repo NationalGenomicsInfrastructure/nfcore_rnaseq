@@ -15,6 +15,9 @@
 [![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?logo=twitter)](https://twitter.com/nf_core)
 [![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?logo=youtube)](https://www.youtube.com/c/nf-core)
 
+## DISCLAIMER
+This is a fork from the original [nf-core/rnaseq pipeline](link). NGI may apply changes neccessary to run the pipeline on their HPC.
+
 ## Introduction
 
 **nf-core/rnaseq** is a bioinformatics pipeline that can be used to analyse RNA sequencing data obtained from organisms with a reference genome and annotation.
