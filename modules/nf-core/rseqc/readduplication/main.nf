@@ -2,10 +2,10 @@ process RSEQC_READDUPLICATION {
     tag "$meta.id"
     label 'process_medium'
 
-    conda "${moduleDir}/environment.yml"
+    conda "bioconda::rseqc=3.0.1 'conda-forge::r-base>=3.5'"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/rseqc:5.0.3--py39hf95cd2a_0' :
-        'biocontainers/rseqc:5.0.3--py39hf95cd2a_0' }"
+        'https://depot.galaxyproject.org/singularity/rseqc:3.0.1--py37h516909a_1' :
+        'biocontainers/rseqc:3.0.1--py37h516909a_1' }"
 
     input:
     tuple val(meta), path(bam)
@@ -28,20 +28,6 @@ process RSEQC_READDUPLICATION {
         -i $bam \\
         -o $prefix \\
         $args
-
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        rseqc: \$(read_duplication.py --version | sed -e "s/read_duplication.py //g")
-    END_VERSIONS
-    """
-
-    stub:
-    def prefix = task.ext.prefix ?: "${meta.id}"
-    """
-    touch ${prefix}.seq.DupRate.xls
-    touch ${prefix}.pos.DupRate.xls
-    touch ${prefix}.DupRate_plot.pdf
-    touch ${prefix}.DupRate_plot.r
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

@@ -5,10 +5,9 @@ keywords:
   - fastq
   - subsample
   - strandedness
-components:
+modules:
   - fq/subsample
   - salmon/quant
-  - salmon/index
 input:
   - meta:
       type: map
@@ -39,6 +38,7 @@ input:
   - make_index:
       type: boolean
       description: Whether to create salmon index before running salmon quant
+
 output:
   - index:
       type: directory
@@ -63,8 +63,5 @@ output:
       description: File containing software versions
       pattern: "versions.yml"
 authors:
-  - "@robsyme"
-  - "@drpatelh"
-maintainers:
   - "@robsyme"
   - "@drpatelh"

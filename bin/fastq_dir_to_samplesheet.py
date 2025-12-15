@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# Written by Harshil Patel and released under the MIT license.
-
 import os
 import sys
 import glob

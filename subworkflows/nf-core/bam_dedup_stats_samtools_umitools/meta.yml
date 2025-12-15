@@ -8,13 +8,12 @@ keywords:
   - bam
   - sam
   - cram
-components:
+modules:
   - umitools/dedup
   - samtools/index
   - samtools/stats
   - samtools/idxstats
   - samtools/flagstat
-  - bam_stats_samtools
 input:
   - ch_bam_bai:
       description: |
@@ -37,10 +36,6 @@ output:
       description: |
         CSI samtools index
         Structure: [ val(meta), path(csi) ]
-  - deduplog:
-      description: |
-        UMI-tools deduplication log
-        Structure: [ val(meta), path(log) ]
   - stats:
       description: |
         File containing samtools stats output
@@ -57,9 +52,7 @@ output:
       description: |
         Files containing software versions
         Structure: [ path(versions.yml) ]
+
 authors:
-  - "@drpatelh"
-  - "@KamilMaliszArdigen"
-maintainers:
   - "@drpatelh"
   - "@KamilMaliszArdigen"

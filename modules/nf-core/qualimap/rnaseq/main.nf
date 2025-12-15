@@ -2,14 +2,14 @@ process QUALIMAP_RNASEQ {
     tag "$meta.id"
     label 'process_medium'
 
-    conda "${moduleDir}/environment.yml"
+    conda "bioconda::qualimap=2.2.2d"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/qualimap:2.3--hdfd78af_0' :
-        'biocontainers/qualimap:2.3--hdfd78af_0' }"
+        'https://depot.galaxyproject.org/singularity/qualimap:2.2.2d--1' :
+        'biocontainers/qualimap:2.2.2d--1' }"
 
     input:
     tuple val(meta), path(bam)
-    tuple val(meta2), path(gtf)
+    path  gtf
 
     output:
     tuple val(meta), path("${prefix}"), emit: results

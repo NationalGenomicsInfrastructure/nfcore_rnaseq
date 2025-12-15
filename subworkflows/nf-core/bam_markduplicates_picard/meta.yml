@@ -6,21 +6,22 @@ keywords:
   - bam
   - sam
   - cram
-components:
+
+modules:
   - picard/markduplicates
   - samtools/index
   - samtools/stats
   - samtools/idxstats
   - samtools/flagstat
-  - bam_stats_samtools
+
 input:
-  - ch_reads:
+  - ch_bam:
       description: |
-        Sequence reads in BAM/CRAM/SAM format
-        Structure: [ val(meta), path(reads) ]
+        BAM/CRAM/SAM file
+        Structure: [ val(meta), path(bam) ]
   - ch_fasta:
       description: |
-        Reference genome fasta file required for CRAM input
+        Reference genome fasta file
         Structure: [ path(fasta) ]
   - ch_fasta:
       description: |
@@ -29,20 +30,12 @@ input:
 output:
   - bam:
       description: |
-        processed BAM/SAM file
+        processed BAM/CRAM/SAM file
         Structure: [ val(meta), path(bam) ]
   - bai:
       description: |
-        BAM/SAM samtools index
+        BAM/CRAM/SAM samtools index
         Structure: [ val(meta), path(bai) ]
-  - cram:
-      description: |
-        processed CRAM file
-        Structure: [ val(meta), path(cram) ]
-  - crai:
-      description: |
-        CRAM samtools index
-        Structure: [ val(meta), path(crai) ]
   - csi:
       description: |
         CSI samtools index
@@ -64,8 +57,5 @@ output:
         Files containing software versions
         Structure: [ path(versions.yml) ]
 authors:
-  - "@dmarron"
-  - "@drpatelh"
-maintainers:
   - "@dmarron"
   - "@drpatelh"
